@@ -10,11 +10,16 @@ func main() {
 
 	for l := 0; l < len(a)-1; l++ {
 		rSum := 0
+		maxEle := a[l]
 		for r := l; r < len(a); r++ {
 			rSum = rSum + a[r]
 
-			if rSum == k && r-l <= m {
-				fmt.Printf("Subset %v \n", a[l:r+1])
+			if maxEle < a[r] {
+				maxEle = a[r]
+			}
+
+			if rSum == k && maxEle <= m {
+				fmt.Printf("Subset %v , maxEle %d \n", a[l:r+1], maxEle)
 			}
 
 		}

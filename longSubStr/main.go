@@ -10,22 +10,22 @@ func main() {
 
 	for r, v := range s {
 
-		sV, ok := set[v]
-
+		pi, ok := set[v]
 		if !ok {
-			// not found
 			set[v] = r
 			cl := r - l + 1
-
 			if cl > lenMx {
 				lenMx = cl
+				fmt.Printf("scan unique - %v \n", s[l:r+1])
 			}
 			continue
 		}
 
-		// found
-		l = sV + 1
 		set[v] = r
+		if pi >= l {
+			l = pi + 1
+		}
+		fmt.Printf("scan %v \n", s[l:r+1])
 
 	}
 
